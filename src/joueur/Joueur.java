@@ -109,6 +109,12 @@ public class Joueur extends AbstractPersonnage {
 	 */
 	public void remiseAZero(){
 		this.pointDeVie = this.pointDeVieMax;
+		
+		//vider la liste d'equipements (vider la collection)
+		for (int i=0;i<this.equipements.size();i++)
+		{
+			this.equipements.remove(i);
+		}
 	}
 	
 	/**
