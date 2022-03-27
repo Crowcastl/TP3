@@ -36,6 +36,14 @@ public class Joueur extends AbstractPersonnage {
 	
 	//Ajout de la collection qui contiendra tous les �quipements ramass�s par le joueur
 	private List<AbstractEquipement> equipements = new ArrayList<AbstractEquipement>();
+	
+	//3 variables membres
+	//reference au casque equipe
+	Casque casqueEquipe = new Casque(pos);
+	//reference a l'armure equipee
+	Armure armureEquipe = new Armure(pos);
+	//reference a l'arme equipee
+	Arme armeEquipe = new Arme(pos);
 
 	/**
 	 * Construceur par paramètre
@@ -105,7 +113,7 @@ public class Joueur extends AbstractPersonnage {
 	/**
 	 * Remise à zéro du joueur
 	 * - remet les points de vie à max
-	 * - vide équipement
+	 * - vide equipement
 	 */
 	public void remiseAZero(){
 		this.pointDeVie = this.pointDeVieMax;
@@ -129,5 +137,37 @@ public class Joueur extends AbstractPersonnage {
 		
 		//ajoute la reference a la collection
 		this.equipements.add(equipement);
+	}
+	
+	/**
+	 * Methode informatrice qui retourne une reference sur la collection d'equipements   
+	 */              
+	public List<AbstractEquipement> getEquipements()
+	{
+		return this.equipements;
+	}
+	
+	/**
+	 * Methode informatrice qui retourne une reference sur le casque equipe
+	 */
+	public Casque getCasqueEquipe()
+	{
+		return this.casqueEquipe;
+	}
+	
+	/**
+	 * Methode informatrice qui retourne une reference sur l'armure equipee
+	 */
+	public Armure getArmureEquipe()
+	{
+		return this.armureEquipe;
+	}
+	
+	/**
+	 * Methode informatrice qui retourne une reference sur l'arme equipee
+	 */
+	public Arme getArmeEquipee()
+	{
+		return this.armeEquipe;
 	}
 }
