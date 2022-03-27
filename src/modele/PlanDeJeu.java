@@ -275,8 +275,12 @@ public class PlanDeJeu extends MonObservable implements MonObserver, Runnable {
 				partiePerdu();
 			}
 			
-			// verifie si le joueur vient de trouver de l'équipement
-			// (à compléter)
+			// verifie si le joueur vient de trouver de l'equipement et si oui, ajoute l'equipement a la collection du joueur
+			for (int i=0;i<this.equipements.size();i++)
+			{
+				if(this.equipements.get(i).getPos().equals(this.joueur.getPos()))
+					this.joueur.membre(this.equipements.get(i));
+			}
 			
 			// verifie s'il y a un combat
 			for(int i=0;i<this.creatures.size();i++){

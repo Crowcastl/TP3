@@ -35,7 +35,7 @@ public class Joueur extends AbstractPersonnage {
 	private boolean mouvement = true;
 	
 	//Ajout de la collection qui contiendra tous les équipements ramassés par le joueur
-	List<AbstractEquipement> collection = new ArrayList<AbstractEquipement>();
+	private List<AbstractEquipement> equipements = new ArrayList<AbstractEquipement>();
 
 	/**
 	 * Construceur par paramÃ¨tre
@@ -110,5 +110,18 @@ public class Joueur extends AbstractPersonnage {
 	public void remiseAZero(){
 		this.pointDeVie = this.pointDeVieMax;
 	}
-
+	
+	/**
+	 * Methode qui recoit une reference a la piece d'equipement a ramasser et qui:
+	 * - indique quil nest plus au sol avec la mutatrice
+	 * - ajoute la reference a la collection (voir collection dans les attributs)
+	 */
+	public void membre(AbstractEquipement equipement)
+	{
+		//indique quil nest plus au sol avec la mutatrice
+		equipement.setAuSol(false);
+		
+		//ajoute la reference a la collection
+		this.equipements.add(equipement);
+	}
 }

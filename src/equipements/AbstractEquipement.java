@@ -15,20 +15,20 @@ import physique.Position;
 
 public class AbstractEquipement extends AbstractObjet {
 
-	// generateur pseudo aléatoire
+	// generateur pseudo aleatoire
 	protected static Random rand = new Random();
 	
-	// indique si l'équipement est au sol
+	// indique si l'equipement est au sol
 	protected boolean auSol = true;
 	
-	// valeur de l'effet de l'équipement
+	// valeur de l'effet de l'equipement
 	protected int valeur;
 	
 
 	/**
 	 * constructeur
 	 * @param pos, position I,J dans le labyrinthe
-	 * @param valeur, valeur de l'effet de l'équipement
+	 * @param valeur, valeur de l'effet de l'equipement
 	 */
 	public AbstractEquipement(Position pos, int valeur){
 		this.pos = pos;
