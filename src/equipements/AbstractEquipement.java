@@ -50,6 +50,14 @@ public class AbstractEquipement extends AbstractObjet {
 	public void setAuSol(boolean auSol){
 		this.auSol = auSol;
 	}	
+	
+	/**
+	 * Mutatrice pour definir la valeur d'un equipement
+	 */
+	public void setValeur(int valeur)
+	{
+		this.valeur = valeur;
+	}
 
 	/**
 	 * informatrice pour savoir si l'équipement est au sol

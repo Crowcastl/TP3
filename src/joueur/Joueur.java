@@ -170,4 +170,71 @@ public class Joueur extends AbstractPersonnage {
 	{
 		return this.armeEquipe;
 	}
+	
+	/**
+	 * Methode qui permet d'equiper une piece d'equipement recu en parametre
+	 */
+	public void equiper(AbstractEquipement equipement)
+	{
+		//identification du type de la piece d'equipement (instanceof)
+		//les seuls types d'equipements a identifier sont: casque, armure, arme
+		if(equipement instanceof Casque)
+		{
+			//change l'equipement equipe en question
+			this.casqueEquipe = (Casque) equipement;
+		}
+		
+		else if (equipement instanceof Armure)
+		{
+			//change l'equipement equipe en question
+			this.armureEquipe = (Armure) equipement;
+		}
+		
+		else if (equipement instanceof Arme)
+		{
+			//change l'equipement equipe en question
+			this.armeEquipe = (Arme) equipement;
+		}
+		
+		//remet la valeur de la variable membre armure a 0
+		this.armureEquipe.setValeur(0);
+		
+		//assigne a armure la somme des valeurs obtenues des equipements de defense (arme et casque)
+		this.armureEquipe.setValeur(this.armeEquipe.getValeur()+this.casqueEquipe.getValeur());
+		
+		//remet la valeur de la variable membre bonusAttaque a 0
+		this.bonusAttaque = 0;
+		
+		//assigne a bonusAttaque la valeur de l'arme equipee, s'il y en a une
+		if(armeEquipe != null)
+			this.bonusAttaque = armeEquipe.getValeur();
+	}
+	
+	/**
+	 * Methode qui trouve la premiere potion dans la collection d'equipements, l'enleve et remet les points de vie a point de vie max.
+	 * NOTE: Si cette methode est appelee mais qu'il n'y a aucune potion elle n'a aucun effet
+	 */
+	public void utiliserPotion()
+	{
+		for(int i=0;i<this.equipements.size();i++)
+		{
+			if(this.equipements.get(i) instanceof Potion)
+			{
+				this.equipements.remove(i);
+				this.pointDeVie = pointDeVieMax;
+			}
+		}
+	}
+	
+	/**
+	 * Methode qui enleve l'equipement s'il y a une remise a zero
+	 * Faire un appel a equiper(null) pour régénérer les calculs
+	 */
+	public void remiserAZero()
+	{
+		this.armeEquipe = null;
+		this.armureEquipe = null;
+		this.casqueEquipe = null;
+		equiper(null);
+	}
 }
