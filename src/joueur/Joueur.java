@@ -113,7 +113,7 @@ public class Joueur extends AbstractPersonnage {
 	/**
 	 * Remise à zéro du joueur
 	 * - remet les points de vie à max
-	 * - vide equipement
+	 * - vide la collection d'equipement
 	 */
 	public void remiseAZero(){
 		this.pointDeVie = this.pointDeVieMax;
