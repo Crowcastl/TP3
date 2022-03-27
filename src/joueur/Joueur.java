@@ -7,7 +7,7 @@ package joueur;
  * @version ETE 2018 - TP2
  */
 
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Cette classe repr√©sente le joueur humain. Elle surcharge le
@@ -33,6 +33,9 @@ public class Joueur extends AbstractPersonnage {
 	
 	private final int PROFONDEUR_VISION = 2;
 	private boolean mouvement = true;
+	
+	//Ajout de la collection qui contiendra tous les Èquipements ramassÈs par le joueur
+	List<AbstractEquipement> collection = new ArrayList<AbstractEquipement>();
 
 	/**
 	 * Construceur par param√®tre
