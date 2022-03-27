@@ -24,6 +24,7 @@ import javax.swing.Timer;
 import creature.AbstractCreature;
 import joueur.Joueur;
 import observer.MonObservable;
+import observer.popUpCombat;
 import personnage.AbstractPersonnage;
 
 public class GestionnaireCombat extends MonObservable implements Runnable{
@@ -54,7 +55,8 @@ public class GestionnaireCombat extends MonObservable implements Runnable{
 		
 		// lance le pop-up window
 		// (à compléter)
-		
+		popUpCombat jFrame = new popUpCombat(hero,creature,this);
+		this.attacherObserver(jFrame);
 		// lance la tâche qui gère le combat
 		Thread t = new Thread(this);
 		t.start();
@@ -120,7 +122,7 @@ public class GestionnaireCombat extends MonObservable implements Runnable{
 		// boucle tant que le hero et la creature sont vivants
 		}while(hero.estVivant() && creature.estVivant());
 
-		combatEnCours = false;
+		//combatEnCours = false;//Enlever suite a Int�gratoin semaine 2
 	}
 
 	/**
