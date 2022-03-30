@@ -56,6 +56,7 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 		
 		//Mettre le jPanel comme un gridlayout
 		jPanel.setLayout(new GridLayout(0,3));
+		//this.setResizable(false); //Optionnel à voir plus tard
 		
 		
 		this.addWindowListener(this);//pas sur mais l'intention: JFrame est ajouter au listenner dans le popUpCombat
@@ -72,7 +73,7 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 	}
 	
 	public void configBoiteMessage() {
-		jTexte.setSize(160,200);
+		jTexte.setSize(245,400);
 		jTexte.setEditable(false);
 		//initialiser la référence membre prévu à cet effet?jsp quoi faire
 		jScroll.add(jTexte);//peut être besoin de consulté liens du prof si s'affiche pas
