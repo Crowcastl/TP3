@@ -20,7 +20,7 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 	private AbstractPersonnage hero;
 	private AbstractCreature creature;
 	private GestionnaireCombat gestionnaireCombat;
-	private JTextArea jTexte = new JTextArea();
+	private JTextArea jTexte = new JTextArea(16,20);
 	private JScrollPane jScroll = new JScrollPane();
 	private JPanel jPanel = new JPanel();
 	
@@ -47,8 +47,9 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 	
 	public void configFrame() {
 		Container container = this.getContentPane();
+		this.setLayout(new BorderLayout());
 		//Insérer le jPanel dans le frame
-		this.add(jPanel);
+		this.add(jPanel, BorderLayout.CENTER);
 		//Instorer la grandeur du frame et sa position
 		this.setLocation(600,300);
 		this.setSize(800,400);
@@ -71,7 +72,7 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 	}
 	
 	public void configBoiteMessage() {
-		jTexte.setSize(16,20);
+		jTexte.setSize(160,200);
 		jTexte.setEditable(false);
 		//initialiser la référence membre prévu à cet effet?jsp quoi faire
 		jScroll.add(jTexte);//peut être besoin de consulté liens du prof si s'affiche pas
