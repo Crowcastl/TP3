@@ -24,7 +24,7 @@ public class PanneauPrincipal extends JPanel{
 	
 	// Panneaux
 	public PanneauDonjon panDonjon;
-
+	public PanneauStatus panStatus;//2022-04-10
 	/**
 	 * Constructeur
 	 * @param taille La taille de l'ecran
@@ -52,6 +52,12 @@ public class PanneauPrincipal extends JPanel{
 		panDonjon = new PanneauDonjon(tailleEcran);
 		add(panDonjon, BorderLayout.CENTER);
 
+		//2022-04-10
+		panStatus = new PanneauStatus(tailleEcran);
+		add(panStatus, BorderLayout.EAST);
+		
+		
+		
 		panDonjon.requestFocus();
 		
 	}
