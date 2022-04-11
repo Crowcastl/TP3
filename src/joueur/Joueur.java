@@ -50,7 +50,7 @@ public class Joueur extends AbstractPersonnage {
 	 * @param pos, position du joueur
 	 */
 	public Joueur() {
-		pointDeVie=100;
+		pointDeVie=100; //CHANGER POUR 100 !!!!!!
 		pointDeVieMax=100;
 	}
 
