@@ -41,7 +41,7 @@ public class PanneauStatusMilieu extends JPanel implements MonObserver{
 	JLabel nbPotion = new JLabel("NB Potions = X");
 	JButton boutonPotion = new JButton("Utiliser Potion");
 	
-	public void iniPanneauMilieu() {
+	public  PanneauStatusMilieu() {
 		//Ini panneau
 		this.setLayout(new GridLayout(1,2));
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));

@@ -35,28 +35,6 @@ public class PanneauStatus extends JPanel implements MonObserver{
 	private JPanel pEquipement;
 	private PanneauStatusBas pStatusBas;
 	
-	//Panneaux Haut
-	JLabel lable = new JLabel("Leeroy Jenkins", SwingConstants.CENTER);
-	JProgressBar barreVie = new JProgressBar();
-	JLabel numNiveau = new JLabel("Niveau: X", SwingConstants.CENTER);
-	JLabel nbEnnemieAff = new JLabel("NB Ennemis Tues: X", SwingConstants.CENTER);
-	JLabel tempsEcou = new JLabel("Temps de jeu: X secondes", SwingConstants.CENTER);
-	
-	//Panneaux Milieu 
-		//Deffance
-	JLabel deffTot = new JLabel("Défence totale: X");
-	JLabel casqueTxt = new JLabel("Casque: ");
-	JComboBox<String> casqueCombo = new JComboBox<String>();//Pas sur type
-	JLabel armureTxt = new JLabel("armure: ");
-	JComboBox <String> armureCombo= new JComboBox<String>();//Pas sur type
-		//Attaque
-	JLabel attTot = new JLabel("Attaque totale: X");
-	JLabel armeTxt = new JLabel("Arme: ");
-	JComboBox<String> armeCombo = new JComboBox<String>();//Pas sur type
-		//Potions
-	JLabel nbPotion = new JLabel("NB Potions = X");
-	JButton boutonPotion = new JButton("Utiliser Potion");
-	
 	
 	public PanneauStatus(Dimension dimention) {
 		//Initialisation panneau Status
@@ -68,89 +46,13 @@ public class PanneauStatus extends JPanel implements MonObserver{
 		
 		pStatusHaut = new PanneauStatusHaut();
 		pStatusMilieu = new PanneauStatusMilieu();
+		pStatusBas = new PanneauStatusBas();
 		
-		this.add(pStatusHaut.getRootPane());
-		//this.add(pStatusMilieu);
-//		iniPanneauHaut();
-//		iniPanneauMilieu();
-//		iniPanneauBas();
-		
-		
-		
-		
+		this.add(pStatusHaut);
+		this.add(pStatusMilieu);
+		this.add(pStatusBas);
 	}
-//	public void iniPanneauHaut() {
-//		//Initialisation du panneau
-////		pStatusHaut = new JPanel();
-//		pStatusHaut.setLayout(new GridLayout(5,1));
-//		pStatusHaut.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//		
-//		
-//		
-//		//Spécification components
-//		Font styleTxt = new Font("Times New Roman",Font.BOLD | Font.ITALIC,24);
-//		lable.setFont(styleTxt);
-//		
-//		barreVie.setForeground(Color.GREEN);
-//		barreVie.setBackground(Color.RED);
-//		
-//		//Ajout components au panneau
-//		pStatusHaut.add(lable);
-//		pStatusHaut.add(barreVie);
-//		pStatusHaut.add(numNiveau);
-//		pStatusHaut.add(nbEnnemieAff);
-//		pStatusHaut.add(tempsEcou);
-//		
-//		
-//		this.add(pStatusHaut);
-//	}
-//	
-//	public void iniPanneauMilieu() {
-//		//Ini panneau
-////		pStatusMilieu = new JPanel();
-//		pStatusMilieu.setLayout(new GridLayout(1,2));
-//		pStatusMilieu.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//		
-//		//Ini Hero
-//		pHero = new JPanel();
-//		try {
-//			configImageHero();
-//		}catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		//Ini pEquipement
-//		pEquipement = new JPanel();
-//		pEquipement.setLayout(new GridLayout(10,1));
-//			//Caractéristique  (manque celle de JComboBox)
-//		boutonPotion.setEnabled(false);//Pas sur
-//			//Ajout dans pEquipement
-//		pEquipement.add(deffTot);
-//		pEquipement.add(casqueTxt);
-//		pEquipement.add(casqueCombo);
-//		pEquipement.add(armureTxt);
-//		pEquipement.add(armureCombo);
-//		pEquipement.add(attTot);
-//		pEquipement.add(armeTxt);
-//		pEquipement.add(armeCombo);
-//		pEquipement.add(nbPotion);
-//		pEquipement.add(boutonPotion);
-//		
-//		//Ajout sur Panneau Milieu
-//		pStatusMilieu.add(pHero);
-//		pStatusMilieu.add(pEquipement);
-//		this.add(pStatusMilieu);
-//	}
-//	
-//	public void iniPanneauBas() {
-//		
-//	}
-//	
-//	public void configImageHero() throws IOException{
-//		BufferedImage image = ImageIO.read(new File("images/hero.png"));
-//		pHero.add(new JLabel(new ImageIcon(image)));
-//	}
-//	
+
 	@Override
 	public void avertir() {
 		repaint();

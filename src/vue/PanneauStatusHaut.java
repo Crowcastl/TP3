@@ -30,38 +30,29 @@ public class PanneauStatusHaut extends JPanel implements MonObserver{
 	
 	
 	public PanneauStatusHaut() {
-		iniPanneauHaut();
-		
-	}
-	public void iniPanneauHaut() {
 		//Initialisation du panneau
-		panneauHaut = new JPanel();
-		this.setLayout(new GridLayout(5,1));
-		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		
-		
-		
-		//Spécification components
-		Font styleTxt = new Font("Times New Roman",Font.BOLD | Font.ITALIC,24);
-		lable.setFont(styleTxt);
-		
-		barreVie.setForeground(Color.GREEN);
-		barreVie.setBackground(Color.RED);
-		
-		//Ajout components au panneau
-		this.add(lable);
-		this.add(barreVie);
-		this.add(numNiveau);
-		this.add(nbEnnemieAff);
-		this.add(tempsEcou);
-		
-		
-		
+				
+				this.setLayout(new GridLayout(5,1));
+				this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				
+				
+				
+				//Spécification components
+				Font styleTxt = new Font("Times New Roman",Font.BOLD | Font.ITALIC,24);
+				lable.setFont(styleTxt);
+				
+				barreVie.setForeground(Color.GREEN);
+				barreVie.setBackground(Color.RED);
+				
+				//Ajout components au panneau
+				this.add(lable);
+				this.add(barreVie);
+				this.add(numNiveau);
+				this.add(nbEnnemieAff);
+				this.add(tempsEcou);
+				
 	}
 	
-	public JPanel getPanneau() {
-		return panneauHaut;
-	}
 	@Override
 	public void avertir() {
 		// TODO Auto-generated method stub
