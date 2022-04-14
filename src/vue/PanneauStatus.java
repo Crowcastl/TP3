@@ -29,11 +29,11 @@ public class PanneauStatus extends JPanel implements MonObserver{
 	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
 	
 	//Panneaux Principaux
-	private JPanel pStatusHaut;
-	private JPanel pStatusMilieu;
+	private PanneauStatusHaut pStatusHaut;
+	private PanneauStatusMilieu pStatusMilieu;
 	private JPanel pHero;
 	private JPanel pEquipement;
-	private JPanel pStatusBas;
+	private PanneauStatusBas pStatusBas;
 	
 	//Panneaux Haut
 	JLabel lable = new JLabel("Leeroy Jenkins", SwingConstants.CENTER);
@@ -66,87 +66,91 @@ public class PanneauStatus extends JPanel implements MonObserver{
 		this.dimention.setSize(dimention.width/3,dimention.height);
 		this.setPreferredSize(this.dimention);
 		
+		pStatusHaut = new PanneauStatusHaut();
+		pStatusMilieu = new PanneauStatusMilieu();
 		
-		iniPanneauHaut();
-		iniPanneauMilieu();
-		iniPanneauBas();
-		
-		
-		
-		
-	}
-	public void iniPanneauHaut() {
-		//Initialisation du panneau
-		pStatusHaut = new JPanel();
-		pStatusHaut.setLayout(new GridLayout(5,1));
-		pStatusHaut.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.add(pStatusHaut.getRootPane());
+		//this.add(pStatusMilieu);
+//		iniPanneauHaut();
+//		iniPanneauMilieu();
+//		iniPanneauBas();
 		
 		
 		
-		//Spécification components
-		Font styleTxt = new Font("Times New Roman",Font.BOLD | Font.ITALIC,24);
-		lable.setFont(styleTxt);
-		
-		barreVie.setForeground(Color.GREEN);
-		barreVie.setBackground(Color.RED);
-		
-		//Ajout components au panneau
-		pStatusHaut.add(lable);
-		pStatusHaut.add(barreVie);
-		pStatusHaut.add(numNiveau);
-		pStatusHaut.add(nbEnnemieAff);
-		pStatusHaut.add(tempsEcou);
-		
-		
-		this.add(pStatusHaut);
-	}
-	
-	public void iniPanneauMilieu() {
-		//Ini panneau
-		pStatusMilieu = new JPanel();
-		pStatusMilieu.setLayout(new GridLayout(1,2));
-		pStatusMilieu.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		
-		//Ini Hero
-		pHero = new JPanel();
-		try {
-			configImageHero();
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		//Ini pEquipement
-		pEquipement = new JPanel();
-		pEquipement.setLayout(new GridLayout(10,1));
-			//Caractéristique  (manque celle de JComboBox)
-		boutonPotion.setDefaultCapable(false);//Pas sur
-			//Ajout dans pEquipement
-		pEquipement.add(deffTot);
-		pEquipement.add(casqueTxt);
-		pEquipement.add(casqueCombo);
-		pEquipement.add(armureTxt);
-		pEquipement.add(armureCombo);
-		pEquipement.add(attTot);
-		pEquipement.add(armeTxt);
-		pEquipement.add(armeCombo);
-		pEquipement.add(nbPotion);
-		pEquipement.add(boutonPotion);
-		
-		//Ajout sur Panneau Milieu
-		pStatusMilieu.add(pHero);
-		pStatusMilieu.add(pEquipement);
-		this.add(pStatusMilieu);
-	}
-	
-	public void iniPanneauBas() {
 		
 	}
-	
-	public void configImageHero() throws IOException{
-		BufferedImage image = ImageIO.read(new File("images/hero.png"));
-		pHero.add(new JLabel(new ImageIcon(image)));
-	}
-	
+//	public void iniPanneauHaut() {
+//		//Initialisation du panneau
+////		pStatusHaut = new JPanel();
+//		pStatusHaut.setLayout(new GridLayout(5,1));
+//		pStatusHaut.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//		
+//		
+//		
+//		//Spécification components
+//		Font styleTxt = new Font("Times New Roman",Font.BOLD | Font.ITALIC,24);
+//		lable.setFont(styleTxt);
+//		
+//		barreVie.setForeground(Color.GREEN);
+//		barreVie.setBackground(Color.RED);
+//		
+//		//Ajout components au panneau
+//		pStatusHaut.add(lable);
+//		pStatusHaut.add(barreVie);
+//		pStatusHaut.add(numNiveau);
+//		pStatusHaut.add(nbEnnemieAff);
+//		pStatusHaut.add(tempsEcou);
+//		
+//		
+//		this.add(pStatusHaut);
+//	}
+//	
+//	public void iniPanneauMilieu() {
+//		//Ini panneau
+////		pStatusMilieu = new JPanel();
+//		pStatusMilieu.setLayout(new GridLayout(1,2));
+//		pStatusMilieu.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//		
+//		//Ini Hero
+//		pHero = new JPanel();
+//		try {
+//			configImageHero();
+//		}catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		//Ini pEquipement
+//		pEquipement = new JPanel();
+//		pEquipement.setLayout(new GridLayout(10,1));
+//			//Caractéristique  (manque celle de JComboBox)
+//		boutonPotion.setEnabled(false);//Pas sur
+//			//Ajout dans pEquipement
+//		pEquipement.add(deffTot);
+//		pEquipement.add(casqueTxt);
+//		pEquipement.add(casqueCombo);
+//		pEquipement.add(armureTxt);
+//		pEquipement.add(armureCombo);
+//		pEquipement.add(attTot);
+//		pEquipement.add(armeTxt);
+//		pEquipement.add(armeCombo);
+//		pEquipement.add(nbPotion);
+//		pEquipement.add(boutonPotion);
+//		
+//		//Ajout sur Panneau Milieu
+//		pStatusMilieu.add(pHero);
+//		pStatusMilieu.add(pEquipement);
+//		this.add(pStatusMilieu);
+//	}
+//	
+//	public void iniPanneauBas() {
+//		
+//	}
+//	
+//	public void configImageHero() throws IOException{
+//		BufferedImage image = ImageIO.read(new File("images/hero.png"));
+//		pHero.add(new JLabel(new ImageIcon(image)));
+//	}
+//	
 	@Override
 	public void avertir() {
 		repaint();
