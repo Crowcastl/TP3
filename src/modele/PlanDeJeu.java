@@ -188,10 +188,12 @@ public class PlanDeJeu extends MonObservable implements MonObserver, Runnable {
 			
 			case 0:
 				cetEquipement = new Arme(posAlea);
+				
 				break;
 
 			case 1:
 				cetEquipement = new Armure(posAlea);
+			
 				break;
 
 			case 2:

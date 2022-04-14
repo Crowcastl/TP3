@@ -88,7 +88,6 @@ public class GestionnaireCombat extends MonObservable implements Runnable{
 			
 			// si la creature est toujours vivante
 			if(creature.estVivant()){
-				
 				// creature donne un coup
 				forceCoupDonne = creature.getForce();
 				hero.recoitCoup(forceCoupDonne);

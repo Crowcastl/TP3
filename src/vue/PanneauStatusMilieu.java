@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import creature.AbstractCreature;
 import equipements.AbstractEquipement;
 import equipements.Arme;
 import equipements.Armure;
@@ -38,13 +39,13 @@ public class PanneauStatusMilieu extends JPanel {
 	//Deffance
 	private JLabel deffTot = new JLabel("Défence totale: "+ planDejeu.getJoueur().getArmure());
 	private JLabel casqueTxt = new JLabel("Casque: ");
-	private JComboBox<String> casqueCombo = new JComboBox<String>();//Pas sur type
+	private JComboBox<AbstractEquipement> casqueCombo = new JComboBox<AbstractEquipement>();//Pas sur type
 	private JLabel armureTxt = new JLabel("armure: ");
-	private JComboBox <String> armureCombo= new JComboBox<String>();//Pas sur type
+	private JComboBox <AbstractEquipement> armureCombo= new JComboBox<AbstractEquipement>();//Pas sur type
 		//Attaque
 	private JLabel attTot = new JLabel("Attaque totale: " + planDejeu.getJoueur().getForce());
 	private JLabel armeTxt = new JLabel("Arme: ");
-	private JComboBox<String> armeCombo = new JComboBox<String>();//Pas sur type
+	private JComboBox<AbstractEquipement> armeCombo = new JComboBox<AbstractEquipement>();//Pas sur type
 		//Potions
 	private JLabel nbPotion = new JLabel("NB Potions = "+ compteurPotion);
 	private JButton boutonPotion = new JButton("Utiliser Potion");
@@ -104,6 +105,11 @@ public void mettreAJoursInfo() {
 		armureCombo.setSelectedItem(planDejeu.getJoueur().getArmureEquipe());
 		armeCombo.setSelectedItem(planDejeu.getJoueur().getArmureEquipe());
 		
+		
+		casqueCombo.removeAllItems();
+		armureCombo.removeAllItems();
+		armeCombo.removeAllItems();
+		
 		 ListIterator<AbstractEquipement> iterateur = equipement.listIterator();	
 		 
 		 while(iterateur.hasNext()){
@@ -111,15 +117,15 @@ public void mettreAJoursInfo() {
 			 
 			 if(equipementEvaluer instanceof Casque)
 			 {
-				 casqueCombo.addItem(equipementEvaluer.toString());
+				 casqueCombo.addItem(equipementEvaluer);
 			 }
 			 else if(equipementEvaluer instanceof Armure) 
 			 {
-				 armureCombo.addItem(equipementEvaluer.toString());
+				 armureCombo.addItem(equipementEvaluer);
 			 }
 			 else if(equipementEvaluer instanceof Arme)
 			 {
-				 armeCombo.addItem(equipementEvaluer.toString());
+				 armeCombo.addItem(equipementEvaluer);
 			 }
 			 else if(equipementEvaluer instanceof Potion)
 			 {
