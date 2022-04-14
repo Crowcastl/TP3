@@ -16,7 +16,7 @@ public class PanneauStatusBas extends JPanel {
 	Dimension dimention;
 	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
 	
-	
+
 	private JTextArea jTexte;
 	private JScrollPane jScroll;
 	
@@ -24,7 +24,7 @@ public class PanneauStatusBas extends JPanel {
 		this.dimention = new Dimension(dimention);
 		this.dimention.setSize(dimention.width,dimention.height);
 		
-		jTexte = new JTextArea(16,20);
+		jTexte = new JTextArea(dimention.height/50,(dimention.width/12));
 		jTexte.setSize(this.dimention);
 	
 		jTexte.setEditable(false);
