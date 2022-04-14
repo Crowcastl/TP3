@@ -3,6 +3,8 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -50,6 +52,9 @@ public class PanneauStatusMilieu extends JPanel {
 	private JLabel nbPotion = new JLabel("NB Potions = "+ compteurPotion);
 	private JButton boutonPotion = new JButton("Utiliser Potion");
 	
+
+	
+	
 	private List<AbstractEquipement> equipement =  planDejeu.getJoueur().getEquipements();
 	
 	public  PanneauStatusMilieu() {
@@ -69,7 +74,8 @@ public class PanneauStatusMilieu extends JPanel {
 		pEquipement = new JPanel();
 		pEquipement.setLayout(new GridLayout(10,1));
 			//Caractéristique  (manque celle de JComboBox)
-		boutonPotion.setEnabled(false);//Pas sur
+		
+		boutonPotion.setEnabled(compteurPotion>0?true:false);
 			//Ajout dans pEquipement
 		pEquipement.add(deffTot);
 		pEquipement.add(casqueTxt);
@@ -90,6 +96,11 @@ public class PanneauStatusMilieu extends JPanel {
 		//Ajout sur Panneau Milieu
 		this.add(pHero);
 		this.add(pEquipement);
+		
+		
+		
+		//PAS SUR OU METTRE CELA PEUT ETRE DOIT CHANGER DE PLACE
+		
 	}
 	
 	public void configImageHero() throws IOException{
@@ -97,7 +108,7 @@ public class PanneauStatusMilieu extends JPanel {
 		pHero.add(new JLabel(new ImageIcon(image)));
 	}
 	
-public void mettreAJoursInfo() {
+	public void mettreAJoursInfo() {
 		attTot.setText("Attaque totale: "+ planDejeu.getJoueur().getForce());
 		deffTot.setText("Défence totale: "+ planDejeu.getJoueur().getArmure());
 		nbPotion.setText("NB Potions = "+ compteurPotion);
@@ -109,6 +120,7 @@ public void mettreAJoursInfo() {
 		casqueCombo.removeAllItems();
 		armureCombo.removeAllItems();
 		armeCombo.removeAllItems();
+		compteurPotion = 0;
 		
 		 ListIterator<AbstractEquipement> iterateur = equipement.listIterator();	
 		 
@@ -137,9 +149,15 @@ public void mettreAJoursInfo() {
 			 }
 			 
 		 }
+		boutonPotion.setEnabled(compteurPotion>0?true:false);
+		
 		
 		
 	 }
+	
+	public JButton getBoutonPotion() {
+		return boutonPotion;
+	}
 
 }
 

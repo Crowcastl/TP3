@@ -23,7 +23,7 @@ public class Minotaure extends AbstractCreature{
 
 		armure=0;
 		force=10;
-		pointDeVie=0; //changer pour 50
+		pointDeVie=50; //changer pour 50
 		pointDeVieMax=50;
 	}
 

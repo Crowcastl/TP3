@@ -24,7 +24,7 @@ public class PanneauStatusBas extends JPanel {
 		this.dimention = new Dimension(dimention);
 		this.dimention.setSize(dimention.width,dimention.height);
 		
-		jTexte = new JTextArea(dimention.height/50,(dimention.width/12));
+		jTexte = new JTextArea(dimention.width/30, dimention.height/19);
 		jTexte.setSize(this.dimention);
 	
 		jTexte.setEditable(false);
