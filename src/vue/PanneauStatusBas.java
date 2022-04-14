@@ -15,13 +15,12 @@ public class PanneauStatusBas extends JPanel implements MonObserver{
 	//Général
 	
 	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
-	private int width;
-	private int height;
+	
 	
 	private JTextArea jTexte;
 	private JScrollPane jScroll;
 	
-	public PanneauStatusBas(Dimension dimention) {
+	public PanneauStatusBas() {
 		
 		jTexte = new JTextArea(20,60);
 	
