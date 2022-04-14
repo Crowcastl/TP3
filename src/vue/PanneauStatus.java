@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
+import equipements.AbstractEquipement;
 import modele.PlanDeJeu;
 
 import java.awt.BorderLayout;
@@ -19,6 +20,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -59,6 +61,29 @@ public class PanneauStatus extends JPanel implements MonObserver{
 		         planDejeu.getJoueur().utiliserPotion();
 		    }
 		}); 
+		
+		
+		
+		pStatusMilieu.getComboArme().addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        Object item = e.getSource();
+		    		itemStateChanged((ItemEvent) item);
+		    }
+		});
+		
+		pStatusMilieu.getComboArmure().addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		    	  Object item = e.getSource();
+			    	itemStateChanged((ItemEvent) item);
+		    }
+		});
+
+		pStatusMilieu.getComboCasque().addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+
+		    }
+		});
+			
 	}
 
 	@Override
@@ -68,6 +93,14 @@ public class PanneauStatus extends JPanel implements MonObserver{
 		pStatusMilieu.mettreAJoursInfo();
 		pStatusBas.mettreAJoursInfo();
 	}
+	
+	public void itemStateChanged(ItemEvent event) {
+		if (event.getStateChange() == ItemEvent.SELECTED) {
+		Object item = event.getItem();
+		planDejeu.getJoueur().equiper((AbstractEquipement) item);
+		}
+	} 
+	
 	
 	
 }

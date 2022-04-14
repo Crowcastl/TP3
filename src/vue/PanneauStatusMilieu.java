@@ -104,7 +104,7 @@ public class PanneauStatusMilieu extends JPanel {
 	}
 	
 	public void configImageHero() throws IOException{
-		BufferedImage image = ImageIO.read(new File("images/hero.png"));
+		BufferedImage image = ImageIO.read(new File("images/arrowtotheKNee.png"));
 		pHero.add(new JLabel(new ImageIcon(image)));
 	}
 	
@@ -153,12 +153,25 @@ public class PanneauStatusMilieu extends JPanel {
 		
 		
 		
+		
 	 }
 	
 	public JButton getBoutonPotion() {
 		return boutonPotion;
 	}
 
+	
+	public JComboBox getComboArme() {
+		return this.armeCombo;	
+	}
+	
+	public JComboBox getComboArmure() {
+		return this.armureCombo;	
+	}
+	
+	public JComboBox getComboCasque() {
+		return this.casqueCombo;	
+	}
 }
 
 

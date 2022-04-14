@@ -132,7 +132,7 @@ public class Donjon {
 				// ajoute à la case, comme voisin réciproque
 				caseCourante.setVoisin(direction, caseVoisine);
 				caseVoisine.setVoisin(Direction.directionOpposee(direction), caseCourante);
-				
+			
 				// ajoute le voisin à la pile
 				pile.empiler(caseVoisine);
 				this.fin = (Case)pile.regarder();
