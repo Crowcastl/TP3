@@ -44,7 +44,7 @@ public class PanneauStatus extends JPanel implements MonObserver{
 		
 		pStatusHaut = new PanneauStatusHaut();
 		pStatusMilieu = new PanneauStatusMilieu();
-		pStatusBas = new PanneauStatusBas(this.dimention);
+		pStatusBas = new PanneauStatusBas();
 		
 		this.add(pStatusHaut);
 		this.add(pStatusMilieu);
