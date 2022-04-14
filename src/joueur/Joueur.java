@@ -64,8 +64,12 @@ public class Joueur extends AbstractPersonnage {
 			// se déplacer
 			super.seDeplacer(direction);
 			
+			System.out.println(equipements.toString());
+			
 			// mise à jour de la vision
 			mettreAJourVision();
+			
+			
 		}
 	}
 	
@@ -129,11 +133,16 @@ public class Joueur extends AbstractPersonnage {
 	 */
 	public void membre(AbstractEquipement equipement)
 	{
+		//ajoute la reference a la collection
+		if(equipement.estAusol())
+		{
+			this.equipements.add(equipement);
+		}
 		//indique quil nest plus au sol avec la mutatrice
 		equipement.setAuSol(false);
 		
-		//ajoute la reference a la collection
-		this.equipements.add(equipement);
+		
+	
 	}
 	
 	/**

@@ -6,6 +6,9 @@ import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -15,31 +18,38 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import equipements.AbstractEquipement;
+import equipements.Arme;
+import equipements.Armure;
+import equipements.Casque;
+import equipements.Potion;
 import modele.PlanDeJeu;
 import observer.MonObserver;
 
 public class PanneauStatusMilieu extends JPanel {
 
 	//Général
-	Dimension dimention;
-	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
+	private Dimension dimention;
+	private PlanDeJeu planDejeu = PlanDeJeu.getInstance();
 	
 	private JPanel pHero;
 	private JPanel pEquipement;
-	
+	private int compteurPotion = 0;
 	//Deffance
-	JLabel deffTot = new JLabel("Défence totale: X");
-	JLabel casqueTxt = new JLabel("Casque: ");
-	JComboBox<String> casqueCombo = new JComboBox<String>();//Pas sur type
-	JLabel armureTxt = new JLabel("armure: ");
-	JComboBox <String> armureCombo= new JComboBox<String>();//Pas sur type
+	private JLabel deffTot = new JLabel("Défence totale: "+ planDejeu.getJoueur().getArmure());
+	private JLabel casqueTxt = new JLabel("Casque: ");
+	private JComboBox<String> casqueCombo = new JComboBox<String>();//Pas sur type
+	private JLabel armureTxt = new JLabel("armure: ");
+	private JComboBox <String> armureCombo= new JComboBox<String>();//Pas sur type
 		//Attaque
-	JLabel attTot = new JLabel("Attaque totale: X");
-	JLabel armeTxt = new JLabel("Arme: ");
-	JComboBox<String> armeCombo = new JComboBox<String>();//Pas sur type
+	private JLabel attTot = new JLabel("Attaque totale: " + planDejeu.getJoueur().getForce());
+	private JLabel armeTxt = new JLabel("Arme: ");
+	private JComboBox<String> armeCombo = new JComboBox<String>();//Pas sur type
 		//Potions
-	JLabel nbPotion = new JLabel("NB Potions = X");
-	JButton boutonPotion = new JButton("Utiliser Potion");
+	private JLabel nbPotion = new JLabel("NB Potions = "+ compteurPotion);
+	private JButton boutonPotion = new JButton("Utiliser Potion");
+	
+	private List<AbstractEquipement> equipement =  planDejeu.getJoueur().getEquipements();
 	
 	public  PanneauStatusMilieu() {
 		//Ini panneau
@@ -71,6 +81,11 @@ public class PanneauStatusMilieu extends JPanel {
 		pEquipement.add(nbPotion);
 		pEquipement.add(boutonPotion);
 		
+		casqueCombo.removeAllItems();
+		armureCombo.removeAllItems();
+		armeCombo.removeAllItems();
+		
+		
 		//Ajout sur Panneau Milieu
 		this.add(pHero);
 		this.add(pEquipement);
@@ -84,8 +99,41 @@ public class PanneauStatusMilieu extends JPanel {
 public void mettreAJoursInfo() {
 		attTot.setText("Attaque totale: "+ planDejeu.getJoueur().getForce());
 		deffTot.setText("Défence totale: "+ planDejeu.getJoueur().getArmure());
+		nbPotion.setText("NB Potions = "+ compteurPotion);
+		casqueCombo.setSelectedItem(planDejeu.getJoueur().getCasqueEquipe());
+		armureCombo.setSelectedItem(planDejeu.getJoueur().getArmureEquipe());
+		armeCombo.setSelectedItem(planDejeu.getJoueur().getArmureEquipe());
 		
-	}
+		 ListIterator<AbstractEquipement> iterateur = equipement.listIterator();	
+		 
+		 while(iterateur.hasNext()){
+			 AbstractEquipement equipementEvaluer = iterateur.next();
+			 
+			 if(equipementEvaluer instanceof Casque)
+			 {
+				 casqueCombo.addItem(equipementEvaluer.toString());
+			 }
+			 else if(equipementEvaluer instanceof Armure) 
+			 {
+				 armureCombo.addItem(equipementEvaluer.toString());
+			 }
+			 else if(equipementEvaluer instanceof Arme)
+			 {
+				 armeCombo.addItem(equipementEvaluer.toString());
+			 }
+			 else if(equipementEvaluer instanceof Potion)
+			 {
+				compteurPotion++; 
+			 }
+			 else
+			 {
+				 System.out.println("problème dans la répartition des équipements");
+			 }
+			 
+		 }
+		
+		
+	 }
 
 }
 
