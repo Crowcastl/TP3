@@ -13,20 +13,23 @@ import observer.MonObserver;
 public class PanneauStatusBas extends JPanel implements MonObserver{
 
 	//Général
-	Dimension dimention;
+	Dimension dimension;
 	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
 	
-	private JTextArea jTexte = new JTextArea(20,20);
-	private JScrollPane jScroll = new JScrollPane(jTexte);
+	private JTextArea jTexte;
+	private JScrollPane jScroll;
 	
-	public PanneauStatusBas() {
-		this.dimention = new Dimension();
+	public PanneauStatusBas(Dimension dimention) {
+		dimension = new Dimension();
+		dimension.setSize(dimention.width/3,dimention.height/3);
 		
-		jTexte.setSize(dimention.width/3,dimention.height/3);
+		
+		jTexte = new JTextArea(dimension.width,dimension.height);
 		jTexte.setEditable(false);
-		
+		System.out.println(dimention.width);
+		jScroll = new JScrollPane(jTexte);
 		jScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		
+		jScroll.setSize(dimension);
 		
 		this.add(jScroll);		
 	}
