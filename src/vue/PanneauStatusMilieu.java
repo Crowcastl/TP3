@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import modele.PlanDeJeu;
 import observer.MonObserver;
 
-public class PanneauStatusMilieu extends JPanel implements MonObserver{
+public class PanneauStatusMilieu extends JPanel {
 
 	//Général
 	Dimension dimention;
@@ -81,10 +81,37 @@ public class PanneauStatusMilieu extends JPanel implements MonObserver{
 		pHero.add(new JLabel(new ImageIcon(image)));
 	}
 	
-	@Override
-	public void avertir() {
-		// TODO Auto-generated method stub
+public void mettreAJoursInfo() {
+		attTot.setText("Attaque totale: "+ planDejeu.getJoueur().getForce());
+		deffTot.setText("Défence totale: "+ planDejeu.getJoueur().getArmure());
 		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

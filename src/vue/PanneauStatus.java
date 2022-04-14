@@ -49,11 +49,16 @@ public class PanneauStatus extends JPanel implements MonObserver{
 		this.add(pStatusHaut);
 		this.add(pStatusMilieu);
 		this.add(pStatusBas);
+		
+		planDejeu.attacherObserver(this);
 	}
 
 	@Override
 	public void avertir() {
 		repaint();
+		pStatusHaut.mettreAJoursInfo();
+		pStatusMilieu.mettreAJoursInfo();
+		pStatusBas.mettreAJoursInfo();
 	}
 	
 	

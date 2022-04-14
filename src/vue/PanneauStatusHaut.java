@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import modele.PlanDeJeu;
 import observer.MonObserver;
 
-public class PanneauStatusHaut extends JPanel implements MonObserver{
+public class PanneauStatusHaut extends JPanel {
 
 	//Général
 	Dimension dimention;
@@ -23,8 +23,8 @@ public class PanneauStatusHaut extends JPanel implements MonObserver{
 	
 	JPanel panneauHaut;
 	JLabel lable = new JLabel("Leeroy Jenkins", SwingConstants.CENTER);
-	JProgressBar barreVie = new JProgressBar();
-	JLabel numNiveau = new JLabel("Niveau: X", SwingConstants.CENTER);
+	JProgressBar barreVie = new JProgressBar(0, planDejeu.getJoueur().getPointDeVieMax());
+	JLabel numNiveau = new JLabel("Niveau: "+ planDejeu.getNiveau(), SwingConstants.CENTER);
 	JLabel nbEnnemieAff = new JLabel("NB Ennemis Tues: X", SwingConstants.CENTER);
 	JLabel tempsEcou = new JLabel("Temps de jeu: X secondes", SwingConstants.CENTER);
 	
@@ -43,6 +43,7 @@ public class PanneauStatusHaut extends JPanel implements MonObserver{
 				
 				barreVie.setForeground(Color.GREEN);
 				barreVie.setBackground(Color.RED);
+				barreVie.setValue(planDejeu.getJoueur().getPointDeVie());
 				
 				//Ajout components au panneau
 				this.add(lable);
@@ -53,10 +54,35 @@ public class PanneauStatusHaut extends JPanel implements MonObserver{
 				
 	}
 	
-	@Override
-	public void avertir() {
-		// TODO Auto-generated method stub
-		
+	public void mettreAJoursInfo() {
+		barreVie.setValue(planDejeu.getJoueur().getPointDeVie());
+		numNiveau.setText("Niveau: "+ planDejeu.getNiveau());
 	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

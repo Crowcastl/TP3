@@ -10,7 +10,7 @@ import javax.swing.ScrollPaneConstants;
 import modele.PlanDeJeu;
 import observer.MonObserver;
 
-public class PanneauStatusBas extends JPanel implements MonObserver{
+public class PanneauStatusBas extends JPanel {
 
 	//Général
 	Dimension dimention;
@@ -22,7 +22,7 @@ public class PanneauStatusBas extends JPanel implements MonObserver{
 	
 	public PanneauStatusBas(Dimension dimention) {
 		this.dimention = new Dimension(dimention);
-		this.dimention.setSize(dimention.width,dimention.height/3);
+		this.dimention.setSize(dimention.width,dimention.height);
 		
 		jTexte = new JTextArea(16,20);
 		jTexte.setSize(this.dimention);
@@ -38,11 +38,9 @@ public class PanneauStatusBas extends JPanel implements MonObserver{
 	
 	
 	
-	
-	@Override
-	public void avertir() {
-		// TODO Auto-generated method stub
+public void mettreAJoursInfo() {
 		
 	}
+	
 
 }
