@@ -314,7 +314,7 @@ public class PlanDeJeu extends MonObservable implements MonObserver, Runnable{
 	 */
 	private void  nouveauNiveau(){
 		
-		System.out.println("nouveau niveau");
+		
 		
 		// la partie est toujours en cours
 		partieEnCours = true;
@@ -384,4 +384,5 @@ public class PlanDeJeu extends MonObservable implements MonObserver, Runnable{
 		return gestCombat;
 	}
 		
+	
 }

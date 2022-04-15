@@ -26,6 +26,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.EventListener;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import observer.MonObserver;
 
@@ -33,11 +35,14 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 	//Général
 	Dimension dimention;
 	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
-	
+	private boolean compteurCombat = false;
+	private int niveauCourant = 0;
+	private int niveauPrecedent = 0;
 	//Panneaux Principaux
 	private PanneauStatusHaut pStatusHaut;
 	private PanneauStatusMilieu pStatusMilieu;
 	private PanneauStatusBas pStatusBas;
+	
 	
 	
 	public PanneauStatus(Dimension dimention) {
@@ -62,6 +67,7 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 		pStatusMilieu.getBoutonPotion().addActionListener(new ActionListener() {          
 		    public void actionPerformed(ActionEvent e) {
 		         planDejeu.getJoueur().utiliserPotion();
+		         ajouterMessageFile("Joueur prend une potion!");
 		         avertir();
 		    }
 		}); 
@@ -74,6 +80,7 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 				if (event.getStateChange() == ItemEvent.SELECTED) {
 					Object armeItem = event.getItem();
 					planDejeu.getJoueur().equiper((AbstractEquipement) armeItem);
+					ajouterMessageFile("Joueur ramasse arme");
 					avertir();
 				}
 			}		    
@@ -84,6 +91,7 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 			if (event.getStateChange() == ItemEvent.SELECTED) {
 				Object armureItem = event.getItem();
 				planDejeu.getJoueur().equiper((AbstractEquipement) armureItem);
+				ajouterMessageFile("Joueur ramasse armure");
 				avertir();
 			}
 		}		    
@@ -94,15 +102,40 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 			if (event.getStateChange() == ItemEvent.SELECTED) {
 				Object casqueItem = event.getItem();
 				planDejeu.getJoueur().equiper((AbstractEquipement) casqueItem);
+				ajouterMessageFile("Joueur ramasse casque");
 				avertir();
 			}
 		}		    
 	});
 	}
 
+	public void ajouterMessageFile(String message) {
+		pStatusBas.ajouterMessageFile(message);
+	}
+
+	
 	@Override
 	public void avertir() {
 		repaint();
+		niveauCourant= planDejeu.getNiveau();
+		
+		if(planDejeu.estEnCombat() && compteurCombat == false)
+		{
+			ajouterMessageFile("Debut de combat");
+			compteurCombat = true;
+		}
+		if(!planDejeu.estEnCombat() && compteurCombat == true)
+		{
+			ajouterMessageFile("Fin combat");
+			compteurCombat = false;
+		}
+		
+		if(niveauCourant != niveauPrecedent)
+		{
+			ajouterMessageFile("Nouveau Niveau!");
+			niveauPrecedent = niveauCourant;
+		}
+		
 		pStatusHaut.mettreAJoursInfo();
 		pStatusMilieu.mettreAJoursInfo();
 		pStatusBas.mettreAJoursInfo();
@@ -117,6 +150,6 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 	} 
 	
 	
-	
+
 	
 }

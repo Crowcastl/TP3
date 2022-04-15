@@ -1,6 +1,8 @@
 package vue;
 
 import java.awt.Dimension;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -16,6 +18,7 @@ public class PanneauStatusBas extends JPanel {
 	Dimension dimention;
 	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
 	
+	private Queue<String> fileMessage = new LinkedList<String>();
 
 	private JTextArea jTexte;
 	private JScrollPane jScroll;
@@ -36,10 +39,20 @@ public class PanneauStatusBas extends JPanel {
 		this.add(jScroll);		
 	}
 	
+	public void ajouterMessageFile(String message) {
+		fileMessage.offer(message);
+	}
 	
 	
 public void mettreAJoursInfo() {
-		
+	String console;
+	
+	while(!fileMessage.isEmpty())
+	{
+		console = fileMessage.poll();
+		jTexte.setText(jTexte.getText()+ console+"\n");
+	}
+	
 	}
 	
 

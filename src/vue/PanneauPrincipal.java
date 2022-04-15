@@ -18,13 +18,16 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import modele.PlanDeJeu;
+
 public class PanneauPrincipal extends JPanel{
 
 	Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
 	
 	// Panneaux
 	public PanneauDonjon panDonjon;
-	public PanneauStatus panStatus;//2022-04-10
+	public PanneauStatus panStatus;
+	
 	/**
 	 * Constructeur
 	 * @param taille La taille de l'ecran
@@ -51,16 +54,16 @@ public class PanneauPrincipal extends JPanel{
 		// définit le panneau de donjon
 		panDonjon = new PanneauDonjon(tailleEcran);
 		add(panDonjon, BorderLayout.CENTER);
-
+		
 		//2022-04-10
 		panStatus = new PanneauStatus(tailleEcran);
 		add(panStatus, BorderLayout.EAST);
 		
 		
-		
 		panDonjon.requestFocus();
 		
 	}
-
+	
+	
 
 }
