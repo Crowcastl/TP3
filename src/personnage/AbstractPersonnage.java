@@ -22,6 +22,7 @@ public abstract class AbstractPersonnage extends AbstractObjet {
 	protected int armure=0;
 	protected int force=10;
 	protected int bonusAttaque = 0;
+	protected int bonusDeffance = 0;
 	protected int pointDeVie=100;
 	protected int pointDeVieMax=100;
 
@@ -56,7 +57,7 @@ public abstract class AbstractPersonnage extends AbstractObjet {
 	}
 
 	public int getArmure() {
-		return armure;
+		return armure + bonusDeffance;
 	}
 
 	public int getForce() {

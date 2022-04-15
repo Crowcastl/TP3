@@ -212,9 +212,16 @@ public class Joueur extends AbstractPersonnage {
 		//remet la valeur de la variable membre bonusAttaque a 0
 		this.bonusAttaque = 0;
 		
+		//remet la valeur de la variable membre bonusDefance a 0
+		this.bonusDeffance = 0;
 		//assigne a bonusAttaque la valeur de l'arme equipee, s'il y en a une
 		if(armeEquipe != null)
 			this.bonusAttaque = armeEquipe.getValeur();
+		//assigne a bonusDeffance la valeur du casque et de l'armuse s'il y en as
+		if(casqueEquipe != null)
+			this.bonusDeffance += casqueEquipe.getValeur();
+		if(armureEquipe != null)
+			this.bonusDeffance += armureEquipe.getValeur();
 	}
 	
 	/**
