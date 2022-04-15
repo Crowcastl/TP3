@@ -114,7 +114,7 @@ public class PanneauStatusMilieu extends JPanel {
 		nbPotion.setText("NB Potions = "+ compteurPotion);
 		casqueCombo.setSelectedItem(planDejeu.getJoueur().getCasqueEquipe());
 		armureCombo.setSelectedItem(planDejeu.getJoueur().getArmureEquipe());
-		armeCombo.setSelectedItem(planDejeu.getJoueur().getArmureEquipe());
+		armeCombo.setSelectedItem(planDejeu.getJoueur().getArmeEquipee());
 		
 		
 		

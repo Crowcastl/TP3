@@ -39,11 +39,11 @@ public class Joueur extends AbstractPersonnage {
 	
 	//3 variables membres
 	//reference au casque equipe
-	Casque casqueEquipe = new Casque(pos);
+	Casque casqueEquipe;
 	//reference a l'armure equipee
-	Armure armureEquipe = new Armure(pos);
+	Armure armureEquipe;
 	//reference a l'arme equipee
-	Arme armeEquipe = new Arme(pos);
+	Arme armeEquipe;
 
 	/**
 	 * Construceur par paramètre
@@ -205,14 +205,26 @@ public class Joueur extends AbstractPersonnage {
 		
 		//remet la valeur de la variable membre armure a 0
 		this.armure = 0;
-		
+		System.out.println(armure);
 		//assigne a armure la somme des valeurs obtenues des equipements de defense (arme et casque)
 		if(armureEquipe != null && casqueEquipe != null)
+		{
 			this.armure = armureEquipe.getValeur()+this.casqueEquipe.getValeur();
+			System.out.println(armureEquipe+" "+this.casqueEquipe);
+		}
+			
 		if(armureEquipe != null && casqueEquipe == null)
+		{
 			this.armure = this.armureEquipe.getValeur();
+			System.out.println(armureEquipe+" "+this.casqueEquipe);
+		}
+			
 		if(armureEquipe == null && casqueEquipe != null)
+		{
 			this.armure = this.casqueEquipe.getValeur();
+			System.out.println(armureEquipe+" "+this.casqueEquipe);
+		}
+			
 			
 		
 		//remet la valeur de la variable membre bonusAttaque a 0
