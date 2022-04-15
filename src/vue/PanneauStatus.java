@@ -62,6 +62,7 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 		pStatusMilieu.getBoutonPotion().addActionListener(new ActionListener() {          
 		    public void actionPerformed(ActionEvent e) {
 		         planDejeu.getJoueur().utiliserPotion();
+		         avertir();
 		    }
 		}); 
 		

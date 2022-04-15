@@ -230,12 +230,15 @@ public class Joueur extends AbstractPersonnage {
 	 */
 	public void utiliserPotion()
 	{
-		for(int i=0;i<this.equipements.size();i++)
+		boolean trouver = false;
+		for(int i=0;i<this.equipements.size() && !trouver;i++)
 		{
 			if(this.equipements.get(i) instanceof Potion)
 			{
 				this.equipements.remove(i);
 				this.pointDeVie = pointDeVieMax;
+				trouver = true;
+			
 			}
 		}
 	}

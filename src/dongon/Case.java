@@ -43,7 +43,7 @@ public class Case {
 	private Position pos = null;
 	
 	// indique que la case a été découverte par le héro
-	private boolean decouverte = false;
+	private boolean decouverte = true;
 
 	// indique si la case a été évalué par l'algorithme de labyrinthe
 	private boolean developpe = false;
