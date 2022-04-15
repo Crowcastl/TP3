@@ -137,6 +137,7 @@ public class Joueur extends AbstractPersonnage {
 		if(equipement.estAusol())
 		{
 			this.equipements.add(equipement);
+			
 		}
 		//indique quil nest plus au sol avec la mutatrice
 		equipement.setAuSol(false);

@@ -21,13 +21,15 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.EventListener;
 
 import observer.MonObserver;
 
-public class PanneauStatus extends JPanel implements MonObserver{
+public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 	//Général
 	Dimension dimention;
 	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
@@ -56,6 +58,7 @@ public class PanneauStatus extends JPanel implements MonObserver{
 		
 		planDejeu.attacherObserver(this);
 		
+		
 		pStatusMilieu.getBoutonPotion().addActionListener(new ActionListener() {          
 		    public void actionPerformed(ActionEvent e) {
 		         planDejeu.getJoueur().utiliserPotion();
@@ -64,26 +67,33 @@ public class PanneauStatus extends JPanel implements MonObserver{
 		
 		
 		
-		pStatusMilieu.getComboArme().addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		        Object item = e.getSource();
-		    		itemStateChanged((ItemEvent) item);
-		    }
+		pStatusMilieu.getComboArme().addItemListener(new ItemListener () {
+			public void itemStateChanged(ItemEvent event) {
+				
+				if (event.getStateChange() == ItemEvent.SELECTED) {
+					Object item = event.getItem();
+					planDejeu.getJoueur().equiper((AbstractEquipement) item);
+				}
+			}		    
 		});
 		
-		pStatusMilieu.getComboArmure().addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		    	  Object item = e.getSource();
-			    	itemStateChanged((ItemEvent) item);
-		    }
-		});
+		pStatusMilieu.getComboArmure().addItemListener(new ItemListener () {
+		public void itemStateChanged(ItemEvent event) {
+			if (event.getStateChange() == ItemEvent.SELECTED) {
+				Object item = event.getItem();
+				planDejeu.getJoueur().equiper((AbstractEquipement) item);
+			}
+		}		    
+	});
 
-		pStatusMilieu.getComboCasque().addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-
-		    }
-		});
-			
+		pStatusMilieu.getComboCasque().addItemListener(new ItemListener () {
+		public void itemStateChanged(ItemEvent event) {
+			if (event.getStateChange() == ItemEvent.SELECTED) {
+				Object item = event.getItem();
+				planDejeu.getJoueur().equiper((AbstractEquipement) item);
+			}
+		}		    
+	});
 	}
 
 	@Override

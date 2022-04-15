@@ -23,7 +23,7 @@ public class Dragon extends AbstractCreature{
 
 		armure=5;
 		force=15;
-		pointDeVie=50;
+		pointDeVie=0;
 		pointDeVieMax=50;
 	}
 

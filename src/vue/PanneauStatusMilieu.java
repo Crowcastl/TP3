@@ -117,9 +117,7 @@ public class PanneauStatusMilieu extends JPanel {
 		armeCombo.setSelectedItem(planDejeu.getJoueur().getArmureEquipe());
 		
 		
-		casqueCombo.removeAllItems();
-		armureCombo.removeAllItems();
-		armeCombo.removeAllItems();
+		
 		compteurPotion = 0;
 		
 		 ListIterator<AbstractEquipement> iterateur = equipement.listIterator();	
@@ -129,7 +127,10 @@ public class PanneauStatusMilieu extends JPanel {
 			 
 			 if(equipementEvaluer instanceof Casque)
 			 {
-				 casqueCombo.addItem(equipementEvaluer);
+				 if(!compareListItem(casqueCombo,equipementEvaluer)) {
+					 casqueCombo.addItem(equipementEvaluer);
+				 }
+				 
 			 }
 			 else if(equipementEvaluer instanceof Armure) 
 			 {
@@ -150,11 +151,29 @@ public class PanneauStatusMilieu extends JPanel {
 			 
 		 }
 		boutonPotion.setEnabled(compteurPotion>0?true:false);
-		
-		
-		
-		
+
 	 }
+	
+	public boolean compareListItem(JComboBox<AbstractEquipement> box, AbstractEquipement equipement) {
+		boolean reponse = true;// Par défault on dit que l'item est dans la liste
+		int validateur = 0;
+		int i;
+		
+		for(i = 0; i< box.getItemCount(); i++)
+		{
+			if(equipement != box.getItemAt(i))
+			{
+				validateur++;
+			}
+		}
+		
+		if(validateur == box.getItemCount())
+		{
+			reponse = false; // S'il ne l'est pas on renvois false
+		}
+		
+		return reponse;
+	}
 	
 	public JButton getBoutonPotion() {
 		return boutonPotion;

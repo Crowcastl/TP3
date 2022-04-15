@@ -23,7 +23,7 @@ public class Araigne extends AbstractCreature{
 
 		armure=0;
 		force=5;
-		pointDeVie=25;
+		pointDeVie=0;
 		pointDeVieMax=25;
 	}
 	

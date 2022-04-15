@@ -1,5 +1,7 @@
 package modele;
 
+import java.util.EventListener;
+
 /**
  * Le plan de jeu est la classe qui supporte le modèle du programme.
  * Il contient:
@@ -40,7 +42,7 @@ import observer.MonObserver;
 import physique.Direction;
 import physique.Position;
 
-public class PlanDeJeu extends MonObservable implements MonObserver, Runnable {
+public class PlanDeJeu extends MonObservable implements MonObserver, Runnable{
 
 	private Donjon donjon;
 	private Joueur joueur = new Joueur();
@@ -188,7 +190,6 @@ public class PlanDeJeu extends MonObservable implements MonObserver, Runnable {
 			
 			case 0:
 				cetEquipement = new Arme(posAlea);
-				
 				break;
 
 			case 1:
