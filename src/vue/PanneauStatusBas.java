@@ -29,13 +29,11 @@ public class PanneauStatusBas extends JPanel {
 		
 		jTexte = new JTextArea(dimention.width/30, dimention.height/19);
 		jTexte.setSize(this.dimention);
-	
+		jTexte.setCaretPosition(jTexte.getDocument().getLength());// Pour mettre la scroll bar toujours en bas
 		jTexte.setEditable(false);
 		
 		jScroll = new JScrollPane(jTexte);
 		jScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		jScroll.setSize(this.dimention);
-		
 		this.add(jScroll);		
 	}
 	
@@ -46,7 +44,7 @@ public class PanneauStatusBas extends JPanel {
 	
 public void mettreAJoursInfo() {
 	String console;
-	
+	System.out.println(fileMessage);
 	while(!fileMessage.isEmpty())
 	{
 		console = fileMessage.poll();

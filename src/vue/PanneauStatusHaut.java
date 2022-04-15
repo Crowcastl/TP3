@@ -17,16 +17,20 @@ import observer.MonObserver;
 public class PanneauStatusHaut extends JPanel {
 
 	//Général
-	Dimension dimention;
-	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
+	private Dimension dimention;
+	private PlanDeJeu planDejeu = PlanDeJeu.getInstance();
 	
 	
-	JPanel panneauHaut;
-	JLabel lable = new JLabel("Leeroy Jenkins", SwingConstants.CENTER);
-	JProgressBar barreVie = new JProgressBar(0, planDejeu.getJoueur().getPointDeVieMax());
-	JLabel numNiveau = new JLabel("Niveau: "+ planDejeu.getNiveau(), SwingConstants.CENTER);
-	JLabel nbEnnemieAff = new JLabel("NB Ennemis Tues: X", SwingConstants.CENTER);
-	JLabel tempsEcou = new JLabel("Temps de jeu: X secondes", SwingConstants.CENTER);
+	private JPanel panneauHaut;
+	private JLabel lable = new JLabel("Leeroy Jenkins", SwingConstants.CENTER);
+	private JProgressBar barreVie = new JProgressBar(0, planDejeu.getJoueur().getPointDeVieMax());
+	private JLabel numNiveau = new JLabel("Niveau: "+ planDejeu.getNiveau(), SwingConstants.CENTER);
+	private JLabel nbEnnemieAff = new JLabel("NB Ennemis Tues: 0", SwingConstants.CENTER);
+	private JLabel tempsEcou = new JLabel("Temps de jeu: 0 secondes", SwingConstants.CENTER);
+	long tempsAvant = System.currentTimeMillis();
+	long tempsApres;
+	int tempsDifference;
+	
 	
 	
 	public PanneauStatusHaut() {
@@ -54,9 +58,13 @@ public class PanneauStatusHaut extends JPanel {
 				
 	}
 	
-	public void mettreAJoursInfo() {
+	public void mettreAJoursInfo(int ennemisMort) {
+		tempsApres = System.currentTimeMillis();
+		tempsDifference =  (int) ((tempsApres - tempsAvant)/1000);
 		barreVie.setValue(planDejeu.getJoueur().getPointDeVie());
 		numNiveau.setText("Niveau: "+ planDejeu.getNiveau());
+		nbEnnemieAff.setText("NB Ennemis Tues: "+ ennemisMort);
+		tempsEcou.setText("Temps de jeu: "+tempsDifference+" secondes");
 	}
 	
 

@@ -35,9 +35,19 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 	//Général
 	Dimension dimention;
 	PlanDeJeu planDejeu = PlanDeJeu.getInstance();
+	//Pour début fin de combat
 	private boolean compteurCombat = false;
+	//Pour savoir nouveau niveau
 	private int niveauCourant = 0;
 	private int niveauPrecedent = 0;
+	//Pour savoir si ramasser items
+	private int itemsJoueurCourant = 0;
+	private int itemsJoueurPrecedent = 0;
+	private int nbreNouveauItems = 0;
+	//Pour compter le nombre d'ennemis  tuée
+	private int nbreEnnemisMorts = 0;
+	//Temps
+	private int compteurTemps = 0;
 	//Panneaux Principaux
 	private PanneauStatusHaut pStatusHaut;
 	private PanneauStatusMilieu pStatusMilieu;
@@ -68,7 +78,7 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 		    public void actionPerformed(ActionEvent e) {
 		         planDejeu.getJoueur().utiliserPotion();
 		         ajouterMessageFile("Joueur prend une potion!");
-		         avertir();
+		         pStatusMilieu.mettreAJoursInfo();
 		    }
 		}); 
 		
@@ -80,8 +90,8 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 				if (event.getStateChange() == ItemEvent.SELECTED) {
 					Object armeItem = event.getItem();
 					planDejeu.getJoueur().equiper((AbstractEquipement) armeItem);
-					ajouterMessageFile("Joueur ramasse arme");
-					avertir();
+					ajouterMessageFile("Joueur équipe "+ armeItem);
+					pStatusMilieu.mettreAJoursInfo();
 				}
 			}		    
 		});
@@ -91,8 +101,8 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 			if (event.getStateChange() == ItemEvent.SELECTED) {
 				Object armureItem = event.getItem();
 				planDejeu.getJoueur().equiper((AbstractEquipement) armureItem);
-				ajouterMessageFile("Joueur ramasse armure");
-				avertir();
+				ajouterMessageFile("Joueur équipe "+ armureItem);
+				pStatusMilieu.mettreAJoursInfo();
 			}
 		}		    
 	});
@@ -102,8 +112,8 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 			if (event.getStateChange() == ItemEvent.SELECTED) {
 				Object casqueItem = event.getItem();
 				planDejeu.getJoueur().equiper((AbstractEquipement) casqueItem);
-				ajouterMessageFile("Joueur ramasse casque");
-				avertir();
+				ajouterMessageFile("Joueur équipe "+ casqueItem);
+				pStatusMilieu.mettreAJoursInfo();
 			}
 		}		    
 	});
@@ -117,8 +127,22 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 	@Override
 	public void avertir() {
 		repaint();
-		niveauCourant= planDejeu.getNiveau();
+		//Pour le temps
+		compteurTemps +=2;
+		//Pour savoir si récupérer nouveau items
+		itemsJoueurCourant = planDejeu.getJoueur().getEquipements().size();
 		
+		if(itemsJoueurCourant != itemsJoueurPrecedent)
+		{
+			nbreNouveauItems = itemsJoueurCourant - itemsJoueurPrecedent;
+			while(nbreNouveauItems >0)
+			{
+				ajouterMessageFile("Joueur ramasse équipement");
+				nbreNouveauItems--;
+			}
+			itemsJoueurPrecedent = itemsJoueurCourant;
+		}
+		//Pour savoir si on est en début ou fin de combat
 		if(planDejeu.estEnCombat() && compteurCombat == false)
 		{
 			ajouterMessageFile("Debut de combat");
@@ -128,15 +152,18 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 		{
 			ajouterMessageFile("Fin combat");
 			compteurCombat = false;
+			nbreEnnemisMorts++;
 		}
-		
+		//Pour savoir si nouveau niveau
+		niveauCourant= planDejeu.getNiveau();
 		if(niveauCourant != niveauPrecedent)
 		{
 			ajouterMessageFile("Nouveau Niveau!");
 			niveauPrecedent = niveauCourant;
 		}
 		
-		pStatusHaut.mettreAJoursInfo();
+		//Actualiser le tout 
+		pStatusHaut.mettreAJoursInfo(nbreEnnemisMorts);
 		pStatusMilieu.mettreAJoursInfo();
 		pStatusBas.mettreAJoursInfo();
 	}

@@ -64,7 +64,6 @@ public class Joueur extends AbstractPersonnage {
 			// se déplacer
 			super.seDeplacer(direction);
 			
-			System.out.println(equipements.toString());
 			
 			// mise à jour de la vision
 			mettreAJourVision();

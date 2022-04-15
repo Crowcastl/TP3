@@ -74,9 +74,9 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 	
 	public void configBoiteMessage() {
 		jTexte.setSize(245,400);
+		jTexte.setCaretPosition(jTexte.getDocument().getLength());// Pour mettre la scroll bar toujours en bas
 		jTexte.setEditable(false);
 		//initialiser la référence membre prévu à cet effet?jsp quoi faire
-		//jScroll.add(jTexte);//peut être besoin de consulté liens du prof si s'affiche pas
 		jScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		//initialiser la référence membre prévu à cet effet?jsp quoi faire
 		jPanel.add(jScroll);
