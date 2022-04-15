@@ -21,6 +21,7 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 	private AbstractCreature creature;
 	private GestionnaireCombat gestionnaireCombat;
 	private JTextArea jTexte = new JTextArea(16,20);
+	
 	private JScrollPane jScroll = new JScrollPane(jTexte);
 	private JPanel jPanel = new JPanel();
 	
@@ -28,6 +29,7 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 		hero = joueur;
 		creature = ennemi;
 		gestionnaireCombat = gestionnaire;
+		
 		configFrame();
 		try {
 			configImageHero();
@@ -74,7 +76,7 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 	
 	public void configBoiteMessage() {
 		jTexte.setSize(245,400);
-		jTexte.setCaretPosition(jTexte.getDocument().getLength());// Pour mettre la scroll bar toujours en bas
+		
 		jTexte.setEditable(false);
 		//initialiser la référence membre prévu à cet effet?jsp quoi faire
 		jScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
