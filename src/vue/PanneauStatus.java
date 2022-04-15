@@ -72,8 +72,9 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 			public void itemStateChanged(ItemEvent event) {
 				
 				if (event.getStateChange() == ItemEvent.SELECTED) {
-					Object item = event.getItem();
-					planDejeu.getJoueur().equiper((AbstractEquipement) item);
+					Object armeItem = event.getItem();
+					planDejeu.getJoueur().equiper((AbstractEquipement) armeItem);
+					avertir();
 				}
 			}		    
 		});
@@ -81,8 +82,9 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 		pStatusMilieu.getComboArmure().addItemListener(new ItemListener () {
 		public void itemStateChanged(ItemEvent event) {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
-				Object item = event.getItem();
-				planDejeu.getJoueur().equiper((AbstractEquipement) item);
+				Object armureItem = event.getItem();
+				planDejeu.getJoueur().equiper((AbstractEquipement) armureItem);
+				avertir();
 			}
 		}		    
 	});
@@ -90,8 +92,9 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 		pStatusMilieu.getComboCasque().addItemListener(new ItemListener () {
 		public void itemStateChanged(ItemEvent event) {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
-				Object item = event.getItem();
-				planDejeu.getJoueur().equiper((AbstractEquipement) item);
+				Object casqueItem = event.getItem();
+				planDejeu.getJoueur().equiper((AbstractEquipement) casqueItem);
+				avertir();
 			}
 		}		    
 	});
@@ -104,13 +107,15 @@ public class PanneauStatus extends JPanel implements MonObserver, ItemListener{
 		pStatusMilieu.mettreAJoursInfo();
 		pStatusBas.mettreAJoursInfo();
 	}
-	
+
+	@Override
 	public void itemStateChanged(ItemEvent event) {
 		if (event.getStateChange() == ItemEvent.SELECTED) {
-		Object item = event.getItem();
-		planDejeu.getJoueur().equiper((AbstractEquipement) item);
+			Object item = event.getItem();
+			planDejeu.getJoueur().equiper((AbstractEquipement) item);
 		}
 	} 
+	
 	
 	
 	
