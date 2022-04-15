@@ -134,11 +134,17 @@ public class PanneauStatusMilieu extends JPanel {
 			 }
 			 else if(equipementEvaluer instanceof Armure) 
 			 {
-				 armureCombo.addItem(equipementEvaluer);
+				 if(!compareListItem(armureCombo, equipementEvaluer)) {
+					 armureCombo.addItem(equipementEvaluer);
+				 }
+				 
 			 }
 			 else if(equipementEvaluer instanceof Arme)
 			 {
-				 armeCombo.addItem(equipementEvaluer);
+				 if(!compareListItem(armeCombo, equipementEvaluer)) {
+					 armeCombo.addItem(equipementEvaluer);
+				 }
+				 
 			 }
 			 else if(equipementEvaluer instanceof Potion)
 			 {
