@@ -104,7 +104,7 @@ public class PanneauStatusMilieu extends JPanel {
 	}
 	
 	public void configImageHero() throws IOException{
-		BufferedImage image = ImageIO.read(new File("images/arrowtotheKNee.png"));
+		BufferedImage image = ImageIO.read(new File("images/hero.png"));
 		pHero.add(new JLabel(new ImageIcon(image)));
 	}
 	

@@ -68,7 +68,7 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 	
 	public void configImageHero() throws IOException {
 		
-		BufferedImage image = ImageIO.read(new File("images/FightingHero.png"));
+		BufferedImage image = ImageIO.read(new File("images/Hero.png"));
 		jPanel.add(new JLabel(new ImageIcon(image)));
 		
 
@@ -89,21 +89,21 @@ public class popUpCombat extends JFrame implements MonObserver, WindowListener{
 		if (ennemi instanceof Araigne)
 		{
 			
-			BufferedImage image = ImageIO.read(new File("images/spooder.png"));
+			BufferedImage image = ImageIO.read(new File("images/spider.png"));
 			jPanel.add(new JLabel(new ImageIcon(image)));
 			
 		}
 		else if (ennemi instanceof Dragon)
 		{
 			
-			BufferedImage image = ImageIO.read(new File("images/betterDragon.png"));
+			BufferedImage image = ImageIO.read(new File("images/Dragon.png"));
 			jPanel.add(new JLabel(new ImageIcon(image)));
 			
 		}
 		else if (ennemi instanceof Minotaure)
 		{
 			
-			BufferedImage image = ImageIO.read(new File("images/Cow.png"));
+			BufferedImage image = ImageIO.read(new File("images/minotaur.png"));
 			jPanel.add(new JLabel(new ImageIcon(image)));
 			
 		}
